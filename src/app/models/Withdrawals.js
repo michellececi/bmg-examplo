@@ -63,19 +63,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Withdrawals.associate = function (models) {
-    models.Withdrawals.belongsTo(models.CompanyNetworks, {
-      foreignKey: "id_company_network",
-      as: "CompanyNetwork",
-    });
-    models.Withdrawals.belongsTo(models.BalanceUsers, {
-      foreignKey: "id_balance_user",
-      as: "User",
-    });
-
-    models.Withdrawals.belongsTo(models.BankAccounts, {
-      foreignKey: "id_bank_account",
-      as: "BankAccount",
-    });
+    //criar as associações
   };
   return Withdrawals;
 };

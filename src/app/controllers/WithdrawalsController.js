@@ -1,19 +1,12 @@
-const { Withdrawals, CompanyNetworks } = require("../models");
+const { Withdrawals } = require("../models");
 
 class WithdrawalsController {
   async get(req, res) {
-    const { tokenWithdrawal, networkToken } = req.params;
-
-    const CompanyNetwork = await CompanyNetworks.findOne({
-      where: {
-        token: networkToken,
-      },
-    });
+    const { tokenWithdrawal } = req.params;
 
     const Withdrawal = await Withdrawals.findOne({
       where: {
         token: tokenWithdrawal,
-        id_company_network: CompanyNetwork.id,
       },
       attributes: [
         "id",

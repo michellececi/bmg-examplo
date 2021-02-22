@@ -33,10 +33,6 @@ class Server {
     this.express.use(require("./routes"));
   }
 
-  protectedRoutes() {
-    this.express.use(require("./protected-routes"));
-  }
-
   invalidRoutes() {
     this.express.use(require("./invalid-routes"));
   }

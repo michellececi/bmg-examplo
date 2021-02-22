@@ -34,18 +34,13 @@
   },
   "devDependencies": {
     "@types/jest": "^25.1.1",
-    "jest": "^25.5.4",
     "nodemon": "^2.0.4",
     "sequelize-cli": "^5.5.1",
     "supertest": "^4.0.2",
     "youch": "^2.0.10"
   },
   "scripts": {
-    "start-dev": "nodemon src/server.js --ignore __tests__",
-    "start": "node src/server.js",
-    "db:migrate:seeds": "node src/database/up-migrations-seeds.js",
-    "db:undo:all": "node src/database/down-migrations.js",
-    "test": "NODE_ENV=test yarn db:migrate:seeds && jest --ci --verbose --forceExit --detectOpenHandles",
-    "posttest": "NODE_ENV=test yarn db:undo:all"
+    "start-dev": "nodemon src/server.js",
+    "start": "node src/server.js"   
   }
 }
