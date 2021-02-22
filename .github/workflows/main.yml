@@ -1,0 +1,34 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.11.x]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Shutdown Ubuntu MySQL (SUDO)
+        run: sudo service mysql stop
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Set up MySQL 5.7
+        uses: mirromutth/mysql-action@master
+        with:
+          mysql version: 5.7
+          mysql database: brydge_test
+          mysql root password: root
+      - name: npm install, build, and test
+        run: |
+          export GITHUB_TOKEN=ec11772f517d4cb5f55d4a4112ea80d4e3d1c749
+          npm install
+          npm test
+        env:
+          CI: true
+          NODE_ENV: "test"
